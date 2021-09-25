@@ -86,12 +86,16 @@ the general [PAB Architecture documentation](https://github.com/input-output-hk/
 - `checkAccess` : This checks for the correct auth NFT at the given wallet id. If the wallet holds the NFT, access can be granted.
 
 ### What you see in the demo
-- We create 4 wallets. One is the auth NFT issuer, two are client wallets and the last one is the protected resource.
-- First client Wallet _One_ requests for NFT. The issuer authorises the wallet One. So it mints the NFT using its own pkh and the client wallet's pkh. We omit the logic for who to authorise at this point.
- The `inspect` endpoints logs the value in each wallet.
-- Second wallet, Wallet _Two_ does not obtain the auth NFT.
-- Now Protected Resource has to decide who to authorise, Wallet _One_ or _Two_
-- The protected smart contract checks both wallets. It finds the NFT in Wallet _One_ and not in Wallet _Two_. In the logs, you can see that the protected smarts logs `ACCESS GRANTED` and `ACCESS DENIED` accordingly.
+The `run.sh` script execute the following.
+
+- It create 4 wallets. One is the auth NFT issuer, two are client wallets and the last one is the protected resource.
+- It then activates the requisite contacts in the wallets. The NFT issuer and 2 client wallets get instance of  `AuthNFTIssuerContract` where the fourth wallet gets an instance of `ProtectedResourceContract`.
+- First client Wallet _One_ requests for NFT. The issuer authorises  wallet One. So, it mints an NFT using its own pkh and the Wallet One's pkh. We omit the logic for who to authorise at this point. The client wallets pkh is derived from the wallet id that is passed in the request payload.
+
+- The `inspect` endpoints logs the value in issuer and client wallet. it should show that the NFT was delivered to the client.
+- Second wallet, Wallet Two does not obtain the auth NFT.
+- Now Protected Resource has to decide who to authorise, Wallet One or Two
+- The protected smart contract checks both wallets. It finds the NFT in Wallet One and not in Wallet Two. In the logs, you can see that the protected smarts logs `ACCESS GRANTED` and `ACCESS DENIED` accordingly.
 
 
 #### Future work
