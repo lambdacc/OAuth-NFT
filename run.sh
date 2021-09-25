@@ -24,11 +24,11 @@ printf "\n1. First, lets log the nft token name of client wallet a (ClientWOne).
 read -n1 -r -p "Press any key to continue..." key
 printf "\n"
 curl -H "Content-Type: application/json" -X POST -d '[]' http://localhost:9080/api/contract/instance/$ClientWOne_IID/endpoint/logWalletNftTokenName
-sleep 2
+sleep 1
 printf "\n"
 printf "\nYou can see in the server logs, wallet one's token name\n"
 
-
+sleep 2
 printf "\n2. Next, client wallet one (ClientWOne) requests for auth NFT by giving its credentials. The 'mint' endpoint of Issuer wallet IssuerW will be invoked. ClientWOne's credential that is supplied in the payload is its wallet ID\n"
 read -n1 -r -p "Press any key to continue..." key
 printf "\n"
@@ -81,7 +81,7 @@ printf "\nYou can see in the server logs, that the protected contract logged ACC
 
 read -n1 -r -p "Press any key to continue..." key
 printf "\n"
-printf "\nTo conclude. We have seen that in this project, we emulated the OAuth protocol. Using an NFT minted by an issuer a protected resources holder was able to check the if a wallet has a valid auth NFT and then grant or deny access.\n"
+printf "\nTo conclude: We have seen that in this project, we emulated the OAuth protocol. Using an NFT minted by an issuer a protected resources holder was able to check the if a wallet has a valid auth NFT and then grant or deny access.\n"
 
 sleep 2
 printf "\nFuture improvements can be encoding list of privileges, expiration time etc. in the NFT\n"

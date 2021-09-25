@@ -65,6 +65,8 @@ This will then start up the server on port 9080. The devcontainer process will t
 ```
 cabal build plutus-starter-pab
 ```
+Ignore the unused import warnings. Did not get time to clean that up.
+
 - Run the PAB binary:
 
 ```
@@ -100,6 +102,8 @@ The `run.sh` script execute the following.
 
 #### Future work
 The token name used in this demo was built using the public key hash of the client wallet (NFT requestor). The token name can be encoded with more information like the expiry time of the auth NFT, the list of privileges obtained by holding this NFT etc.  
+
+The contract code can be cleaned up a bit. Did not get time to tidy up some unused imports.
 
 ### Tips
 #### To use entr to watch your source file during development

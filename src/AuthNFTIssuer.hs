@@ -14,23 +14,16 @@ module AuthNFTIssuer(issuerCS, endpoints, AuthNFTIssuerSchema) where
 
 import           Control.Lens         (view)
 import           Control.Monad          hiding (fmap)
-import           Data.Aeson             (ToJSON, FromJSON)
-import qualified Data.ByteString        as BS
-import qualified Data.ByteString.UTF8   as BSU
 import qualified Data.Map               as Map hiding (empty)
 import           Data.Text              (Text)
 import           Data.Void              (Void)
-import           GHC.Generics           (Generic)
 import           Ledger                 hiding (mint, singleton)
-import           Ledger.Ada             as Ada
 import           Ledger.Constraints     as Constraints
 import qualified Ledger.Typed.Scripts   as Scripts
 import           Ledger.Value           as Value
 import           Plutus.Contract
-import           Plutus.Trace.Emulator  as Emulator
 import qualified PlutusTx
 import           PlutusTx.Prelude       hiding (Semigroup(..), unless)
-import           Playground.Contract    (printJson, printSchemas, ensureKnownCurrencies, stage, ToSchema)
 import           Playground.TH          (mkKnownCurrencies, mkSchemaDefinitions)
 import           Playground.Types       (KnownCurrency (..))
 import           Prelude                (IO, Show (..), String, Semigroup (..) )
@@ -52,7 +45,7 @@ issuerCS = scriptCurrencySymbol . policy
 
 type AuthNFTIssuerSchema =
                   Endpoint "mint" Wallet
-              .\/ Endpoint "inspect" String
+              .\/ Endpoint "inspect" String  {-Argument can be just () instead of String. Not done due to want of time-}
               .\/ Endpoint "logWalletNftTokenName" ()
 
 mint :: forall w s e. AsContractError e => Wallet -> Contract w s e ()

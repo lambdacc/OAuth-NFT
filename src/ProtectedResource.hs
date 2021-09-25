@@ -15,41 +15,21 @@ module ProtectedResource(endpoints, ProtectedResourceSchema) where
 import           Control.Lens           (view)
 import           Control.Monad          hiding (fmap)
 import           Data.Aeson             (ToJSON, FromJSON)
-import qualified Data.ByteString        as BS
-import qualified Data.ByteString.UTF8   as BSU
 import qualified Data.Map               as Map hiding (empty)
 import           Data.Text              (Text)
-import           Data.Void              (Void)
 import           GHC.Generics           (Generic)
 import           Ledger                 hiding (mint, singleton)
-import           Ledger.Ada             as Ada
-import           Ledger.Constraints     as Constraints
 import qualified Ledger.Typed.Scripts   as Scripts
 import           Ledger.Value           as Value
 import           AuthNFTIssuer      as I hiding (endpoints)
 import           Plutus.Contract
-import           Plutus.Trace.Emulator  as Emulator
 import qualified PlutusTx
 import           PlutusTx.Prelude       hiding (Semigroup(..), unless)
-import           Playground.Contract    (printJson, printSchemas, ensureKnownCurrencies, stage, ToSchema)
+import           Playground.Contract    (ToSchema)
 import           Playground.TH          (mkKnownCurrencies, mkSchemaDefinitions)
 import           Playground.Types       (KnownCurrency (..))
 import           Prelude                (IO, Show (..), String, Semigroup (..) )
-import           Text.Printf            (printf)
 import           Wallet.Emulator.Wallet (Wallet, walletPubKey)
-
-{-# INLINABLE mkPolicy #-}
-mkPolicy :: PubKeyHash -> () -> ScriptContext -> Bool
-mkPolicy pkh () ctx = txSignedBy (scriptContextTxInfo ctx) pkh
-
-policy :: PubKeyHash -> Scripts.MintingPolicy
-policy pkh = mkMintingPolicyScript $
-    $$(PlutusTx.compile [|| Scripts.wrapMintingPolicy . mkPolicy ||])
-    `PlutusTx.applyCode`
-    PlutusTx.liftCode pkh
-
-curSymbol :: PubKeyHash -> CurrencySymbol
-curSymbol = scriptCurrencySymbol . policy
 
 data CheckArg = CheckArg
     { issuerWallet :: !Wallet
