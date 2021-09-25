@@ -19,7 +19,7 @@ Potentially NFTs can be used for achieving the functionality of the OAuth protoc
 
 
 ### Implementation
-In this scheme, there is an issuer smart contract called `AuthNFTIssuer.hs` that mints and issues NFTs to authorised clients. The NFT minted is delivered to the authorised wallet. There is another smart contract called `ProtectedResource.hs` that acts as the custodian of the restricted resource. The protected smart contract grants access to a client wallet if it holds the authentication NFT. If it does not, then access is denied.
+In this scheme, there is an issuer smart contract called `AuthNFTIssuer` that mints and issues NFTs to authorised clients. The NFT minted is delivered to the authorised wallet. There is another smart contract called `ProtectedResource` that acts as the custodian of the restricted resource. The protected smart contract grants access to a client wallet if it holds the authentication NFT. If it does not, then access is denied.
 
 What makes the scheme secure is the way the NFT in minted. The NFT's currency symbol in the pkh of the Issuer whereas the token name is the pkh of the client wallet. This makes the NFT policy unique to the issuer as well as the client wallet. The protected smart contract checks wallets by walletId of the issuer as well as that wallet itelf. So a given wallet should have the NFT issued by the issuer and also the token should match its own pkh to be granted access by the protected smart contract.
 
