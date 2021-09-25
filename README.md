@@ -41,13 +41,13 @@ Here's an example of running and interacting with this contract via the API. For
 1. Build the PAB executable:
 
 ```
-cabal build oauth-nft
+cabal build plutus-starter-pab
 ```
 
 2. Run the PAB binary:
 
 ```
-cabal exec -- oauth-nft
+cabal exec -- plutus-starter-pab
 ````
 
 This will then start up the server on port 9080. The devcontainer process will then automatically expose this port so that you can connect to it from any terminal (it doesn't have to be a terminal running in the devcontainer).
