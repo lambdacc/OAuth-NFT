@@ -94,7 +94,7 @@ The `run.sh` script execute the following.
 
 - It create 4 wallets. One is the auth NFT issuer, two are client wallets and the last one is the protected resource.
 - It then activates the requisite contacts in the wallets. The NFT issuer and 2 client wallets get instance of  `AuthNFTIssuerContract` where the fourth wallet gets an instance of `ProtectedResourceContract`.
-- First client Wallet _One_ requests for NFT. The issuer authorises  wallet One. So, it mints an NFT using its own pkh and the Wallet One's pkh. We omit the logic for who to authorise at this point. The client wallets pkh is derived from the wallet id that is passed in the request payload.
+- First client Wallet One requests for NFT. The issuer authorises wallet One. So, it mints an NFT using its own pkh and the Wallet One's pkh. We omit the logic for who to authorise at this point. The client wallets pkh is derived from the wallet id that is passed in the request payload.
 
 - The `inspect` endpoints logs the value in issuer and client wallet. it should show that the NFT was delivered to the client.
 - Second wallet, Wallet Two does not obtain the auth NFT.
