@@ -81,7 +81,7 @@ the general [PAB Architecture documentation](https://github.com/input-output-hk/
 #### Endpoints
 `AuthNFTIssuer.hs` has the following endpoints:
 - `mint` : It mints NFT for a given Wallet id as input and sends it to that wallet.
-- `inspect` : It logs the total value in the Issuer. This is used for demoing that the minted NFT is delivered to the client wallet and not kept in the issuer wallet.
+- `inspect` : It logs the total value in the wallet. This is used for demoing that the minted NFT is delivered to the client wallet and not kept in the issuer wallet.
 - `logWalletNftTokenName` : This logs the token name that the issuer will use for a given wallet id. 
 
 `ProtectedResource.hs` has the following endpoints:
