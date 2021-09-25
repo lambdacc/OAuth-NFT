@@ -7,6 +7,8 @@ This repo includes
  - configuration for building PAB executable
  - A `run.sh` script using which you can run a demo of the functionality in the PAB simulator 
 
+Short video: [Link](https://drive.google.com/file/d/1brfFYd664Ob39M4iLJXZhPJy3BK5v6ep/view?usp=sharing)
+
 ### Idea of OAuth-NFT
 
 This project showcases the potential use of NFT, for implementing OAuth 2.0 type authentication.
